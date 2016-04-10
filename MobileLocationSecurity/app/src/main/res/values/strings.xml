@@ -15,4 +15,8 @@
     <string name="normal">Set as regular file</string>
     <string name="saveButton">Save &amp; Close</string>
 
+    <!-- File List View String -->
+    <string name="locNotes">Notifications</string>
+    <string name="locDocs">Location-Locked Documents</string>
+    <string name="regDocs">Regular Documents</string>
 </resources>
