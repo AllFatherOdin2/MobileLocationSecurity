@@ -1,7 +1,18 @@
 <resources>
     <string name="app_name">MobileLocationSecurity</string>
     <string name="action_settings">Settings</string>
+
+    <!-- Home View Strings -->
     <string name="home">Location Locker</string>
     <string name="createDoc">Create New File</string>
     <string name="viewDocs">View Files</string>
+
+    <!-- File Edit View Strings -->
+    <string name="defDocTitle">Enter a Title</string>
+    <string name="docText">Enter information....</string>
+    <string name="notification">Set as Notification</string>
+    <string name="locked">Set as locked file</string>
+    <string name="normal">Set as regular file</string>
+    <string name="saveButton">Save &amp; Close</string>
+
 </resources>
