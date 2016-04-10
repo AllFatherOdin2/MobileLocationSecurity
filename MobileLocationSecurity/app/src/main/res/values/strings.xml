@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MobileLocationSecurity</string>
     <string name="action_settings">Settings</string>
+    <string name="home">Location Locker</string>
+    <string name="createDoc">Create New File</string>
+    <string name="viewDocs">View Files</string>
 </resources>
