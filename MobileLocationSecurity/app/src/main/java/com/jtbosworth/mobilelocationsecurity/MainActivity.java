@@ -1,5 +1,6 @@
 package com.jtbosworth.mobilelocationsecurity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -23,14 +24,14 @@ public class MainActivity extends AppCompatActivity {
         createFileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //transition to create file page
+                startActivity(new Intent(MainActivity.this, ViewFileActivity.class));
             }
         });
 
         viewFileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //transition to create file page
+                startActivity(new Intent(MainActivity.this, ViewFileListActivity.class));
             }
         });
     }
