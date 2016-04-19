@@ -5,18 +5,18 @@ import java.util.UUID;
 /**
  * Created by Helios on 4/19/2016.
  */
-public class File {
+public class MyFile {
     private UUID id;
     private String title;
     private String location;
     private String content;
     private String fileType;
 
-    public File(){
+    public MyFile(){
         this(UUID.randomUUID());
     }
 
-    public File(UUID id) {
+    public MyFile(UUID id) {
         this.id = id;
     }
 
@@ -24,4 +24,10 @@ public class File {
     public void setLocation(String location){ this.location = location; }
     public void setContent(String content){ this.content = content; }
     public void setFileType(String fileType){ this.fileType = fileType; }
+
+    public UUID getId(){ return id; }
+    public String getTitle(){ return title; }
+    public String getLocation(){ return location; }
+    public String getContent(){ return content; }
+    public String getFileType(){ return fileType; }
 }

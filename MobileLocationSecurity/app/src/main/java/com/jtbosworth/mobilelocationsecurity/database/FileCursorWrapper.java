@@ -6,7 +6,7 @@ package com.jtbosworth.mobilelocationsecurity.database;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
-import com.jtbosworth.mobilelocationsecurity.File;
+import com.jtbosworth.mobilelocationsecurity.MyFile;
 
 import java.util.UUID;
 
@@ -17,14 +17,14 @@ public class FileCursorWrapper extends CursorWrapper {
         super(cursor);
     }
 
-    public File getFile() {
+    public MyFile getFile() {
         String uuidString = getString(getColumnIndex(FileTable.Cols.UUID));
         String title = getString(getColumnIndex(FileTable.Cols.TITLE));
         String location = getString(getColumnIndex(FileTable.Cols.LOCATION));
         String content = getString(getColumnIndex(FileTable.Cols.CONTENT));
         String fileType = getString(getColumnIndex(FileTable.Cols.FILE_TYPE));
 
-        File file = new File(UUID.fromString(uuidString));
+        MyFile file = new MyFile(UUID.fromString(uuidString));
         file.setTitle(title);
         file.setLocation(location);
         file.setContent(content);

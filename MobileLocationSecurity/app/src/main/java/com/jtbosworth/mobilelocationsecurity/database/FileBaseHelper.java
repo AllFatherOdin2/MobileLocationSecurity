@@ -11,7 +11,7 @@ import com.jtbosworth.mobilelocationsecurity.database.FileDBSchema.FileTable;
 
 public class FileBaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "FileBaseHelper";
-    private static final int VERSION = 2;
+    private static final int VERSION = 1;
     private static final String DATABASE_NAME = "fileTable.db";
 
     public FileBaseHelper(Context context) {
