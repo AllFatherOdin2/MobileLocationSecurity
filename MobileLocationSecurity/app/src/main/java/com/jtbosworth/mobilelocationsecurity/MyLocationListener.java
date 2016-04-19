@@ -1,11 +1,16 @@
 package com.jtbosworth.mobilelocationsecurity;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by David on 4/19/2016.
@@ -14,10 +19,23 @@ public class MyLocationListener implements LocationListener {
     protected LocationManager locationManager;
     protected Context context;
     private final int LLD_RANGE = 10;
+    private FileQueryManager queryManager;
 
     @Override
     public void onLocationChanged(Location location) {
-        //pull from database and see if any LLDs should be locked or unlocked
+        queryManager = FileQueryManager.get(context);
+        List<MyFile> dbList = queryManager.getFiles();
+        List<MyFile> displayList = new ArrayList<MyFile>();
+        for (MyFile file : dbList){
+            if(file.getLocation().compareTo(location.toString()) == 0){
+                displayList.add(file);
+            }
+        }
+        refreshDisplay(displayList);
+    }
+
+    private void refreshDisplay(List<MyFile> displayList) {
+
     }
 
     @Override
