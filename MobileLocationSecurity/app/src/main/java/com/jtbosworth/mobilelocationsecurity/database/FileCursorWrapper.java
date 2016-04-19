@@ -8,7 +8,6 @@ import android.database.CursorWrapper;
 
 import com.jtbosworth.mobilelocationsecurity.File;
 
-import java.util.Date;
 import java.util.UUID;
 
 import com.jtbosworth.mobilelocationsecurity.database.FileDBSchema.FileTable;
