@@ -30,7 +30,7 @@ public class FileQueryManager {
 
     private FileQueryManager(Context context) {
         this.context = context.getApplicationContext();
-        this.database = new FileBaseHelper(context).getWritableDatabase();
+        this.database = new FileBaseHelper(this.context).getWritableDatabase();
     }
 
 
