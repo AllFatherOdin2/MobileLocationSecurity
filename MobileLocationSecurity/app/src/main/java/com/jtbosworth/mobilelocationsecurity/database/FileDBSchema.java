@@ -5,13 +5,12 @@ package com.jtbosworth.mobilelocationsecurity.database;
  */
 
 public class FileDBSchema {
-    public static final class CrimeTable {
+    public static final class FileTable {
         public static final String NAME = "files";
 
         public static final class Cols {
             public static final String UUID = "uuid";
             public static final String TITLE = "title";
-            public static final String DATE = "date";
             public static final String LOCATION = "location";
             public static final String CONTENT = "content";
             public static final String FILE_TYPE = "fileType";
