@@ -10,7 +10,6 @@ import com.jtbosworth.mobilelocationsecurity.database.FileCursorWrapper;
 import com.jtbosworth.mobilelocationsecurity.database.FileDBSchema;
 import com.jtbosworth.mobilelocationsecurity.database.FileDBSchema.FileTable;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +17,16 @@ import java.util.List;
  * Created by Helios on 4/19/2016.
  */
 public class FileQueryManager {
+    private static FileQueryManager fileQueryManager;
     private Context context;
     private SQLiteDatabase database;
+
+    public static FileQueryManager get(Context context) {
+        if (fileQueryManager == null) {
+            fileQueryManager = new FileQueryManager(context);
+        }
+        return fileQueryManager;
+    }
 
     private FileQueryManager(Context context) {
         this.context = context.getApplicationContext();
