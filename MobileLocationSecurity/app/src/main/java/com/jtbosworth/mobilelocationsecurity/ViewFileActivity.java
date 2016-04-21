@@ -64,18 +64,19 @@ public class ViewFileActivity extends AppCompatActivity implements LocationListe
                     }
 
                     boolean typeSet = false;
+                    Log.d("ViewFileActivity", "RadioButton ID: " + rGroup.getCheckedRadioButtonId());
                     switch(rGroup.getCheckedRadioButtonId()){
-                        case 0:
+                        case R.id.notifButton:
                             Log.d("ViewFileActivity", "Set as Notification");
                             file.setFileType("Notification");
                             typeSet = true;
                             break;
-                        case 1:
+                        case R.id.lockedButton:
                             Log.d("ViewFileActivity", "Set as Locked");
                             file.setFileType("Location-Locked");
                             typeSet = true;
                             break;
-                        case 2:
+                        case R.id.regularButton:
                             Log.d("ViewFileActivity", "Set as Regular");
                             file.setFileType("Regular");
                             typeSet = true;
