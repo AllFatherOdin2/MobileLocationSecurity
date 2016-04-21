@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -128,5 +129,9 @@ public class ViewFileListActivity extends AppCompatActivity implements LocationL
     @Override
     public void onFragmentInteraction(Uri uri) {
         Log.i("FragmentInteraction", "Reached onFragmentInteraction in ViewFileListActivity.java");
+    }
+
+    public void onClick(View view){
+        Log.i("onClick", "Fragment was clicked");
     }
 }
