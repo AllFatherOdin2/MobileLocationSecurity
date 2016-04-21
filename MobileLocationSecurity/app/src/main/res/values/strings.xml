@@ -19,4 +19,7 @@
     <string name="locNotes">Notifications</string>
     <string name="locDocs">Location-Locked Documents</string>
     <string name="regDocs">Regular Documents</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
