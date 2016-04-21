@@ -32,75 +32,79 @@ public class ViewFileActivity extends AppCompatActivity implements LocationListe
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton rb = (RadioButton) group.findViewById(checkedId);
-                if(null!=rb && checkedId > -1){
-                    Toast.makeText(getApplicationContext(), rb.getText(), Toast.LENGTH_SHORT).show();
+        if (rGroup != null) {
+            rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                    RadioButton rb = (RadioButton) group.findViewById(checkedId);
+                    if(null!=rb && checkedId > -1){
+                        Toast.makeText(getApplicationContext(), rb.getText(), Toast.LENGTH_SHORT).show();
+                    }
+
                 }
+            });
+        }
 
-            }
-        });
+        if (saveButton != null) {
+            saveButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    MyFile file = new MyFile();
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MyFile file = new MyFile();
+                    Log.d("ViewFileActivity", "Set information");
+                    file.setContent(information.getText().toString());
+                    String docTitle = title.getText().toString();
+                    boolean titleSet = false;
+                    if (docTitle != null && docTitle.compareTo("") != 0) {
+                        Log.d("ViewFileActivity", "Set Title");
+                        file.setTitle(docTitle);
+                        titleSet = true;
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Please set a title", Toast.LENGTH_SHORT).show();
+                    }
 
-                Log.d("ViewFileActivity", "Set information");
-                file.setContent(information.getText().toString());
-                String docTitle = title.getText().toString();
-                boolean titleSet = false;
-                if (docTitle != null && docTitle.compareTo("") != 0) {
-                    Log.d("ViewFileActivity", "Set Title");
-                    file.setTitle(docTitle);
-                    titleSet = true;
-                } else {
-                    Toast.makeText(getApplicationContext(), "Please set a title", Toast.LENGTH_SHORT);
-                }
+                    boolean typeSet = false;
+                    switch(rGroup.getCheckedRadioButtonId()){
+                        case 0:
+                            Log.d("ViewFileActivity", "Set as Notification");
+                            file.setFileType("Notification");
+                            typeSet = true;
+                            break;
+                        case 1:
+                            Log.d("ViewFileActivity", "Set as Locked");
+                            file.setFileType("Location-Locked");
+                            typeSet = true;
+                            break;
+                        case 2:
+                            Log.d("ViewFileActivity", "Set as Regular");
+                            file.setFileType("Regular");
+                            typeSet = true;
+                            break;
+                        default:
+                            Toast.makeText(getApplicationContext(),
+                                    "Please select a notification type",
+                                    Toast.LENGTH_SHORT).show();
+                    }
 
-                boolean typeSet = false;
-                switch(rGroup.getCheckedRadioButtonId()){
-                    case 0:
-                        Log.d("ViewFileActivity", "Set as Notification");
-                        file.setFileType("Notification");
-                        typeSet = true;
-                        break;
-                    case 1:
-                        Log.d("ViewFileActivity", "Set as Locked");
-                        file.setFileType("Location-Locked");
-                        typeSet = true;
-                        break;
-                    case 2:
-                        Log.d("ViewFileActivity", "Set as Regular");
-                        file.setFileType("Regular");
-                        typeSet = true;
-                        break;
-                    default:
+                    Location loc = getCurrentLocation(locationManager);
+                    boolean locSet = false;
+                    if(loc != null) {
+                        Log.d("ViewFileActivity", "Setting Location");
+                        file.setLocation(loc.toString());
+                        locSet = true;
+                    } else {
                         Toast.makeText(getApplicationContext(),
-                                "Please select a notification type",
-                                Toast.LENGTH_SHORT).show();
-                }
+                                "Could not determine current location. Please wait a few seconds and try again",
+                                Toast.LENGTH_LONG).show();
+                    }
 
-                Location loc = getCurrentLocation(locationManager);
-                boolean locSet = false;
-                if(loc != null) {
-                    Log.d("ViewFileActivity", "Setting Location");
-                    file.setLocation(loc.toString());
-                    locSet = true;
-                } else {
-                    Toast.makeText(getApplicationContext(),
-                            "Could not determine current location. Please wait a few seconds and try again",
-                            Toast.LENGTH_LONG);
+                    if(typeSet && titleSet && locSet){
+                        Log.d("ViewFileActivity", "Starting new activity");
+                        startActivity(new Intent(ViewFileActivity.this, MainActivity.class));
+                    }
                 }
-
-                if(typeSet && titleSet && locSet){
-                    Log.d("ViewFileActivity", "Starting new activity");
-                    startActivity(new Intent(ViewFileActivity.this, MainActivity.class));
-                }
-            }
-        });
+            });
+        }
     }
 
     //--------------------------------------- Location Listener Code ------------------------------
