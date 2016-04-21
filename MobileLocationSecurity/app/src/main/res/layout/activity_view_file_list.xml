@@ -4,20 +4,20 @@
     android:layout_height="match_parent">
 
     <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
         layout="@layout/location_based_notifications"
         android:layout_weight=".33" />
 
     <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
         layout="@layout/location_locked_documents"
         android:layout_weight=".33" />
 
     <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
         layout="@layout/unlocked_documents"
         android:layout_weight=".33" />
 
