@@ -31,8 +31,11 @@ public class ViewFileActivity extends AppCompatActivity implements LocationListe
         final EditText title = (EditText) findViewById(R.id.documentTitle);
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Log.d("ViewFileActivity",
+                "Location Provider enabled: "+locationManager.isProviderEnabled(locationManager.GPS_PROVIDER));
 
-        if (rGroup != null) {
+        //OLD TEST CODE - Used to figure out if the radio group was working.
+        /*if (rGroup != null) {
             rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -43,7 +46,7 @@ public class ViewFileActivity extends AppCompatActivity implements LocationListe
 
                 }
             });
-        }
+        }*/
 
         if (saveButton != null) {
             saveButton.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +104,7 @@ public class ViewFileActivity extends AppCompatActivity implements LocationListe
 
                     if(typeSet && titleSet && locSet){
                         Log.d("ViewFileActivity", "Starting new activity");
+                        Log.d("ViewFileActivity", "Location: "+loc.toString());
                         startActivity(new Intent(ViewFileActivity.this, MainActivity.class));
                     }
                 }
