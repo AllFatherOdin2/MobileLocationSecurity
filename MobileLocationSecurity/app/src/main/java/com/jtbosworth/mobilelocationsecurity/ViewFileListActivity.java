@@ -40,7 +40,8 @@ public class ViewFileListActivity extends AppCompatActivity implements LocationL
             Log.e("ViewFileListActivity", "Failed to request location update - Permissions not found");
         }
 
-        /*Fragment fragment = new LocationBasedNotification();
+        /*
+        Fragment fragment = new LocationBasedNotification();
         Fragment fragment1 = new LocationBasedNotification();
         Fragment fragment2 = new LocationBasedNotification();
         Fragment fragment3 = new LocationBasedNotification();
@@ -109,7 +110,7 @@ public class ViewFileListActivity extends AppCompatActivity implements LocationL
     private boolean compareLocations(String fileLocString, Location phoneLoc){
         boolean goodLat = false;
         boolean goodLong = false;
-        double MAX_OFFSET = 0.000005;
+        double MAX_OFFSET = 0.00001;
         double accuracyFactor = 1;
         if(phoneLoc.getAccuracy() > 15 && phoneLoc.getAccuracy() <= 25){
             accuracyFactor = 2;
@@ -166,7 +167,26 @@ public class ViewFileListActivity extends AppCompatActivity implements LocationL
         Log.d("VFLA-RefreshDisplay", "Notification List size: "+notificationList.size());
         Log.d("VFLA-RefreshDisplay", "Locked List size: "+lldList.size());
         Log.d("VFLA-RefreshDisplay", "Regular List size: "+regularList.size());
+
         //Add UI fragments for each list
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+
+        for(MyFile f : notificationList){
+            Fragment fragment = LocationBasedNotification.newInstance(f.getTitle(),f.getId());
+            fragmentTransaction.add(R.id.locationBasedNotificationsScrollView, fragment);
+        }
+        for(MyFile f : lldList){
+            Fragment fragment = LocationBasedNotification.newInstance(f.getTitle(),f.getId());
+            fragmentTransaction.add(R.id.locationLockedDocumentScrollView, fragment);
+        }
+        for(MyFile f : regularList){
+            Fragment fragment = LocationBasedNotification.newInstance(f.getTitle(),f.getId());
+            fragmentTransaction.add(R.id.unlockedDocumentScrollView, fragment);
+        }
+
+        fragmentTransaction.commit();
+
     }
 
     @Override
