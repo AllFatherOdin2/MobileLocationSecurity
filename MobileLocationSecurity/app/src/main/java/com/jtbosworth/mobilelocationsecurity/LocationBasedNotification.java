@@ -69,7 +69,7 @@ public class LocationBasedNotification extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_location_based_notification, container, false);
         TextView textView = (TextView) v.findViewById(R.id.notifFragmentText);
-        textView.setText(mParam1);
+        textView.setText("Title: "+mParam1+"\nUUID: "+mParam2);
         return v;
     }
 

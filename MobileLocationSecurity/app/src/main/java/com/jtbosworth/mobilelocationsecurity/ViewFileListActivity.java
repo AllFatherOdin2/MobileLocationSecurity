@@ -230,6 +230,6 @@ public class ViewFileListActivity extends AppCompatActivity implements LocationL
     }
 
     public void onClick(View view){
-        Log.i("onClick", "Fragment was clicked");
+        Log.i("onClick", "Fragment "+view.getId()+" was clicked");
     }
 }
