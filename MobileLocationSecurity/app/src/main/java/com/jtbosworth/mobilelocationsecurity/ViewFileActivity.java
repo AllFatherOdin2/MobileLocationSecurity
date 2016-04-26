@@ -104,7 +104,9 @@ public class ViewFileActivity extends AppCompatActivity implements LocationListe
 
                     if(typeSet && titleSet && locSet){
                         Log.d("ViewFileActivity", "Starting new activity");
-                        Log.d("ViewFileActivity", "Location: "+loc.toString());
+                        //Log.d("ViewFileActivity", "Location: " + loc.toString());
+                        FileQueryManager queryManager = FileQueryManager.get(getApplicationContext());
+                        queryManager.addFile(file);
                         startActivity(new Intent(ViewFileActivity.this, MainActivity.class));
                     }
                 }
