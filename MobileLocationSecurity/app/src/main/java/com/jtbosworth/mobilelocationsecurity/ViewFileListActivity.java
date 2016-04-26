@@ -13,6 +13,7 @@ import android.util.Log;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -117,7 +118,7 @@ public class ViewFileListActivity extends AppCompatActivity implements LocationL
         }
         if(phoneLoc.getAccuracy() > 25){
             Toast.makeText(getApplicationContext(),"Accuracy is too poor. Hold still and try again", Toast.LENGTH_SHORT);
-            startActivity(new Intent(ViewFileListActivity.this, MainActivity.class));
+            //startActivity(new Intent(ViewFileListActivity.this, MainActivity.class));
         }
 
         String[] fileLocArray = fileLocString.split(" ");
@@ -174,14 +175,33 @@ public class ViewFileListActivity extends AppCompatActivity implements LocationL
 
         for(MyFile f : notificationList){
             Fragment fragment = LocationBasedNotification.newInstance(f.getTitle(),f.getId());
+            /*
+            TextView fragText = (TextView) findViewById(R.id.notifFragmentText);
+            if (fragText != null) {
+                fragText.setText(f.getTitle());
+            }
+            */
             fragmentTransaction.add(R.id.locationBasedNotificationsScrollView, fragment);
         }
         for(MyFile f : lldList){
             Fragment fragment = LocationBasedNotification.newInstance(f.getTitle(),f.getId());
+
+            /*
+            TextView fragText = (TextView) findViewById(R.id.notifFragmentText);
+            if (fragText != null) {
+                fragText.setText(f.getTitle());
+            }
+            */
             fragmentTransaction.add(R.id.locationLockedDocumentScrollView, fragment);
         }
         for(MyFile f : regularList){
             Fragment fragment = LocationBasedNotification.newInstance(f.getTitle(),f.getId());
+            /*
+            TextView fragText = (TextView) findViewById(R.id.notifFragmentText);
+            if (fragText != null) {
+                fragText.setText(f.getTitle());
+            }
+            */
             fragmentTransaction.add(R.id.unlockedDocumentScrollView, fragment);
         }
 
@@ -196,7 +216,7 @@ public class ViewFileListActivity extends AppCompatActivity implements LocationL
 
     @Override
     public void onProviderEnabled(String provider) {
-        Log.i("LocationListener","Provider Enabled");
+        Log.i("LocationListener", "Provider Enabled");
     }
 
     @Override
