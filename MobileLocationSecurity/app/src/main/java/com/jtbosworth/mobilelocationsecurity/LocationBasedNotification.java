@@ -7,6 +7,9 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.UUID;
 
 
 /**
@@ -37,16 +40,16 @@ public class LocationBasedNotification extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param param1 Title of document.
+     * @param param2 UUID of document.
      * @return A new instance of fragment LocationBasedNotification.
      */
     // TODO: Rename and change types and number of parameters
-    public static LocationBasedNotification newInstance(String param1, String param2) {
+    public static LocationBasedNotification newInstance(String param1, UUID param2) {
         LocationBasedNotification fragment = new LocationBasedNotification();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_PARAM2, param2.toString());
         fragment.setArguments(args);
         return fragment;
     }
@@ -64,7 +67,10 @@ public class LocationBasedNotification extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_location_based_notification, container, false);
+        View v = inflater.inflate(R.layout.fragment_location_based_notification, container, false);
+        TextView textView = (TextView) v.findViewById(R.id.notifFragmentText);
+        textView.setText("Title: "+mParam1+"\nUUID: "+mParam2);
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
