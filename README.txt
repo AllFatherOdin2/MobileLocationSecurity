@@ -1,0 +1,1 @@
+Our project is compile and run using the standard Andriod Studio process. Build and run on phone.
